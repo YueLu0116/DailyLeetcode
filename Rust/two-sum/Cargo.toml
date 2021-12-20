@@ -1,5 +1,5 @@
 [package]
-name = "two-sum-1"
+name = "two-sum"
 version = "0.1.0"
 edition = "2021"
 
