@@ -19,6 +19,19 @@ impl Solution {
         }
         ret
     }
+
+    pub fn two_sum_clean(nums: Vec<i32>, target: i32) -> Vec<i32>{
+        let mut num_id_map = HashMap::<i32, usize>::new();
+        
+        for (id, num) in nums.into_iter().enumerate(){
+            match num_id_map.get(&(target-num)){
+                Some(&pre_idx)=> return vec![pre_idx as i32, id as i32],
+                _ => {num_id_map.insert(num, id);},
+            }
+        }
+
+        unreachable!()
+    }
 }
 
 #[cfg(test)]
@@ -28,25 +41,25 @@ mod tests {
     fn example1() {
         let nums = vec![2, 7, 11, 15];
         let target : i32 = 9;
-        assert_eq!(Solution::two_sum(nums, target), vec![0,1]);
+        assert_eq!(Solution::two_sum_clean(nums, target), vec![0,1]);
     }
     #[test]
     fn example2() {
         let nums = vec![3,2,4];
         let target : i32 = 6;
-        assert_eq!(Solution::two_sum(nums, target), vec![1,2]);
+        assert_eq!(Solution::two_sum_clean(nums, target), vec![1,2]);
     }
     #[test]
     fn example3() {
         let nums = vec![3,3];
         let target : i32 = 6;
-        assert_eq!(Solution::two_sum(nums, target), vec![0,1]);
+        assert_eq!(Solution::two_sum_clean(nums, target), vec![0,1]);
     }
 
     #[test]
     fn example4() {
         let nums = vec![-1,0,3,7];
         let target : i32 = 2;
-        assert_eq!(Solution::two_sum(nums, target), vec![0,2]);
+        assert_eq!(Solution::two_sum_clean(nums, target), vec![0,2]);
     }
 }
