@@ -36,8 +36,8 @@ impl Solution {
         }
         let mut trust_scores = vec![0;n as usize];
         for pair in trust.iter(){
-            trust_scores[pair[0] as usize] -= 1;
-            trust_scores[pair[1] as usize] += 1;
+            trust_scores[(pair[0]-1) as usize] -= 1;
+            trust_scores[(pair[1]-1) as usize] += 1;
         }
 
         for (id,scores) in trust_scores.iter().enumerate(){
